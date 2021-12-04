@@ -15,8 +15,15 @@ public class StringProcessor {
         return copyString;
     }
 
+    /* Филиппов А.В. 04.12.2021 Комментарий не удалять.
+     Не работает! См. задание. Не выполнено вот это
+     Если вторая строка пустая или null, выбросить исключение.
+    */
     public int stringCountIn(String a, String b){
         int count = 0;
+        /* Филиппов А.В. 04.12.2021 Комментарий не удалять.
+         Строки обычно через equals сравниваются
+        */
         if (b != "") {
             for(int i = 0; i <= a.length() - b.length(); i++){
                 String c = a.substring(i, i+b.length());
