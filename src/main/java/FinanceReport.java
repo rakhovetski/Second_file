@@ -6,6 +6,7 @@ class FinanceReport{
     private int paymentYear;
     private int paymentMonth;
     private int paymentDay;
+
     public FinanceReport(String fullName, int paymentYear, int paymentMonth, int paymentDay,Payment...payments){
         this.fullName = fullName;
         this.paymentYear = paymentYear;
@@ -13,6 +14,7 @@ class FinanceReport{
         this.paymentDay = paymentDay;
         this.payments = payments;
     }
+
     public FinanceReport(int n)
     {
         payments = new Payment[n];
@@ -58,6 +60,11 @@ class FinanceReport{
         return payments;
     }
 
+    /* Филиппов А.В. 05.12.2021 Комментарий не удалять.
+     Не работает! Сумма должна быть *** руб. ** коп.
+     Причем копейки нужно выводить 2-мя знаками всегда, т.е. не 1 коп, а 01 коп.
+     Для этого есть флаги у форматной строки.
+    */
     @Override
     public String toString() {
         StringBuilder main_string = new StringBuilder();
@@ -73,6 +80,13 @@ class FinanceReport{
         return main_string.toString();
     }
 
+    /* Филиппов А.В. 04.12.2021 Комментарий не удалять.
+     Не работает! Это не конструктор.
+     public FinanceReport(FinanceReport src) {}
+     И в задании есть вот такая строка, которая требует делать "глубокую" копию
+        (после создания копии массива при изменении данных в объектах исходного массива копия изменяться не должна).
+     Ваша функция нужную копию не делает.
+    */
     public FinanceReport copy(){
         Payment[] paym = new Payment[this.payments.length];
         paym = this.payments;

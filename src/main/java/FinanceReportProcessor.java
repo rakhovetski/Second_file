@@ -1,6 +1,17 @@
 
 class FinanceReportProcessor
 {
+    /* Филиппов А.В. 05.12.2021 Комментарий не удалять.
+     Не работает! Отобрали мы платежи по букве, хотим посмотреть результат.
+     И получаем исключение. Вы об этом написали в комментарии )))
+
+    Решать отладчиком.
+    Ставим точку остановки на
+        String s = FinanceReportProcessor.getNameStartOnChar(financeReport, 'Р').toString();
+    и пошагово идем пока не поймем где ловим null.
+    Потом есть не меньше двух очевидных путей исправления.
+
+    */
     public static FinanceReport getNameStartOnChar(FinanceReport report, char a){
         FinanceReport financeReport = new FinanceReport(report.getReports().length);
         financeReport.setFullName(report.getFullName());
