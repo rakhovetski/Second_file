@@ -1,6 +1,8 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.net.PortUnreachableException;
+import java.security.spec.ECField;
 
 import static org.junit.Assert.*;
 
@@ -33,12 +35,20 @@ public class StringProcessorTests {
         int b = a.stringCountIn("hellohelohello", "he");
         assertEquals(3,b);
     }
+
     @Test
     public void testStringCountIn2(){
         StringProcessor a = new StringProcessor();
-        int b = a.stringCountIn("hellohelohello", "");
-        assertEquals(0,b);
+        try{
+            int b = a.stringCountIn("hellohelohello", "");
+            fail();
+        }
+        catch(Exception e){
+            final String expected = "Empty line entered";
+            assertEquals(expected, e.getMessage());
+        }
     }
+
 
     @Test
     public void testReplaceString1(){

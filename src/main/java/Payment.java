@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-class Payment{
+public class Payment{
     private String fullName;
     private int paymentDay;
     private int paymentMonth;

@@ -1,5 +1,5 @@
 
-class FinanceReportProcessor
+public class FinanceReportProcessor
 {
     public static FinanceReport getNameStartOnChar(FinanceReport report, char a){
         FinanceReport financeReport = new FinanceReport(report.getReports().length);

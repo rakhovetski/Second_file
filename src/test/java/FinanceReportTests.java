@@ -14,11 +14,22 @@ public class FinanceReportTests {
     }
 
     @Test
-    public void copyTest(){
+    public void financeReportToStringTest(){
         Payment payment1 = new Payment("Романовский Иван", 2021, 10,20,10000);
-        FinanceReport financeReport = new FinanceReport("Раховецкий Андрей Олегович", 2021, 11, 27, payment1);
-        FinanceReport financeReport1 = financeReport.copy();
-        assertEquals(true,financeReport.equals(financeReport1));
+        Payment payment2 = new Payment("Асаевич Никита", 2020, 5,10,1231);
+        FinanceReport financeReport = new FinanceReport("Раховецкий Андрей Олегович", 2021, 11, 27, payment1,payment2);
+        assertEquals(financeReport.toString(),"[Автор: Раховецкий Андрей Олегович, дата :27.11.2021, Платежи: [Плательщик: Романовский Иван, дата: 2021.10.20 сумма: 100 руб. 00 коп.\n" +
+                ",Плательщик: Асаевич Никита, дата: 2020.5.10 сумма: 12 руб. 31 коп.\n" +
+                ",]]");
+    }
+
+    @Test
+    public void constructorCopyTest(){
+        Payment payment1 = new Payment("Романовский Иван", 2021, 10,20,10000);
+        Payment payment2 = new Payment("Асаевич Никита", 2020, 5,10,1231);
+        FinanceReport financeReport = new FinanceReport("Раховецкий Андрей Олегович", 2021, 11, 27, payment1,payment2);
+        FinanceReport financeReport1 = new FinanceReport(financeReport);
+        assertEquals(financeReport.toString(),financeReport1.toString());
     }
 
     @Test

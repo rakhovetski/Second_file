@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-class FinanceReport{
+public class FinanceReport{
     private Payment[] payments;
     private String fullName;
     private int paymentYear;
@@ -16,6 +16,9 @@ class FinanceReport{
     public FinanceReport(int n)
     {
         payments = new Payment[n];
+    }
+    public FinanceReport(FinanceReport financeReport){
+        this(financeReport.fullName, financeReport.getPaymentYear(), financeReport.getPaymentMonth(), financeReport.getPaymentDay(), financeReport.payments);
     }
 
 
@@ -60,24 +63,25 @@ class FinanceReport{
 
     @Override
     public String toString() {
+        int rubblesWithPenny;
+        int rubbles;
+        int penny1;
+        int penny2;
         StringBuilder main_string = new StringBuilder();
         String first_string = "[Автор: %s, дата :%d.%d.%d, Платежи: [";
         main_string.append(String.format(first_string, fullName, paymentDay, paymentMonth, paymentYear));
-        String t = "Плательщик: %s, дата: %d.%d.%d сумма: %d коп.\n,";
+        String t = "Плательщик: %s, дата: %d.%d.%d сумма: %d руб. %d%d коп.\n,";
 
         for(int i = 0; i < payments.length; i++){
-            main_string.append(String.format(t, payments[i].getFullName(), payments[i].getPaymentDay(), payments[i].getPaymentMonth(), payments[i].getPaymentYear(), payments[i].getSumInPenny()));
+            rubblesWithPenny = payments[i].getSumInPenny();
+            rubbles = rubblesWithPenny / 100;
+            penny1 = rubblesWithPenny % 10;
+            penny2 = (rubblesWithPenny / 10) % 10;
+            main_string.append(String.format(t, payments[i].getFullName(), payments[i].getPaymentDay(), payments[i].getPaymentMonth(), payments[i].getPaymentYear(), rubbles,penny2, penny1));
         }
         main_string.append("]]");
         System.out.println(main_string);
         return main_string.toString();
-    }
-
-    public FinanceReport copy(){
-        Payment[] paym = new Payment[this.payments.length];
-        paym = this.payments;
-        FinanceReport fin = new FinanceReport(this.fullName, this.paymentYear, this.paymentMonth, this.paymentDay, paym);
-        return fin;
     }
 
     public String getPaymentFullName(int i){

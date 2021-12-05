@@ -17,7 +17,7 @@ public class StringProcessor {
 
     public int stringCountIn(String a, String b){
         int count = 0;
-        if (b != "") {
+        if (!b.equals("") && b != null) {
             for(int i = 0; i <= a.length() - b.length(); i++){
                 String c = a.substring(i, i+b.length());
                 if(c.equals(b)){
@@ -26,7 +26,7 @@ public class StringProcessor {
             }
         }
         else{
-            return 0;
+            throw new IllegalArgumentException("Empty line entered");
         }
         return count;
     }
