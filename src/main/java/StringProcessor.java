@@ -17,7 +17,7 @@ public class StringProcessor {
 
     public int stringCountIn(String a, String b){
         int count = 0;
-        if (!b.equals("") && b != null) {
+        if (b != null && !b.equals("")) {
             for(int i = 0; i <= a.length() - b.length(); i++){
                 String c = a.substring(i, i+b.length());
                 if(c.equals(b)){

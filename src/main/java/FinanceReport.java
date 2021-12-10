@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Objects;
 
 public class FinanceReport{
@@ -12,6 +13,14 @@ public class FinanceReport{
         this.paymentMonth = paymentMonth;
         this.paymentDay = paymentDay;
         this.payments = payments;
+    }
+    public FinanceReport()
+    {
+        this.fullName = "";
+        this.paymentDay = 1;
+        this.paymentMonth = 1;
+        this.paymentYear = 1970;
+        this.payments = new Payment[0];
     }
     public FinanceReport(int n)
     {
@@ -61,6 +70,7 @@ public class FinanceReport{
         return payments;
     }
 
+
     @Override
     public String toString() {
         int rubblesWithPenny;
@@ -80,7 +90,6 @@ public class FinanceReport{
             main_string.append(String.format(t, payments[i].getFullName(), payments[i].getPaymentDay(), payments[i].getPaymentMonth(), payments[i].getPaymentYear(), rubbles,penny2, penny1));
         }
         main_string.append("]]");
-        System.out.println(main_string);
         return main_string.toString();
     }
 

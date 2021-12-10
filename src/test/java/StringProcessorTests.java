@@ -36,6 +36,13 @@ public class StringProcessorTests {
         assertEquals(3,b);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testStringCoountIn4(){
+        StringProcessor a = new StringProcessor();
+        int b = a.stringCountIn("hellohelohello", null);
+        assertEquals(3,b);
+    }
+
     @Test
     public void testStringCountIn2(){
         StringProcessor a = new StringProcessor();
